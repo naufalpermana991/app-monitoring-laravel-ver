@@ -60,16 +60,15 @@
         <div class="container mt-5">
             <div class="box-shadow p-5">
                 <h4 class="text-center mb-4">Formulir Kelola Data Permintaan Alat</h4>
-                <form action="{{ route('permintaan-alat.update', $data->id) }}" method="POST">
+                <form action="{{ route('permintaan-alat.store') }}" method="POST">
 
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label class="font-weight-bold">Nomer Permintaan</label>
                                 <input type="text" class="form-control @error('no_permintaan') is-invalid @enderror"
-                                    name="no_permintaan" value="{{ old('no_permintaan', $data->no_permintaan) }}"
+                                    name="no_permintaan" value="{{ old('no_permintaan') }}"
                                     placeholder="Masukkan Nomor Permintaan">
 
                                 <!-- error message untuk no_permintaan -->
@@ -84,8 +83,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Kode Alat</label>
                                 <input type="text" class="form-control @error('id_alat') is-invalid @enderror"
-                                    name="id_alat" value="{{ old('id_alat', $data->id_alat) }}"
-                                    placeholder="Masukkan Nama Alat">
+                                    name="id_alat" value="{{ old('id_alat') }}" placeholder="Masukkan Nama Alat">
 
                                 <!-- error message untuk id_alat -->
                                 @error('id_alat')
@@ -99,7 +97,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama Peminta</label>
                                 <input type="text" class="form-control @error('user_peminta') is-invalid @enderror"
-                                    name="user_peminta" value="{{ old('user_peminta', $data->user_peminta) }}"
+                                    name="user_peminta" value="{{ old('user_peminta') }}"
                                     placeholder="Masukkan Spesifikasi Alat">
 
                                 <!-- error message untuk user_peminta -->
@@ -117,7 +115,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama Penyerah</label>
                                 <input type="text" class="form-control @error('user_penyerah') is-invalid @enderror"
-                                    name="user_penyerah" value="{{ old('user_penyerah', $data->user_penyerah) }}"
+                                    name="user_penyerah" value="{{ old('user_penyerah') }}"
                                     placeholder="Masukkan Nama Penyerah">
 
                                 <!-- error message untuk user_penyerah -->
@@ -132,7 +130,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama Penerima</label>
                                 <input type="text" class="form-control @error('user_penerima') is-invalid @enderror"
-                                    name="user_penerima" value="{{ old('user_penerima', $data->user_penerima) }}"
+                                    name="user_penerima" value="{{ old('user_penerima') }}"
                                     placeholder="Masukkan Nama Penerima">
 
                                 <!-- error message untuk user_penerima -->
@@ -148,7 +146,7 @@
                                 <label class="font-weight-bold">Nama Penyetuju</label>
                                 <input type="text"
                                     class="form-control @error('user_penyetuju') is-invalid @enderror"
-                                    name="user_penyetuju" value="{{ old('user_penyetuju', $data->user_penyetuju) }}"
+                                    name="user_penyetuju" value="{{ old('user_penyetuju') }}"
                                     placeholder="Masukkan Nama Penyetuju">
 
                                 <!-- error message untuk user_penyetuju -->
@@ -167,7 +165,7 @@
                                 <label class="font-weight-bold">Tanggal Permintaan</label>
                                 <input type="date"
                                     class="form-control @error('tgl_permintaan') is-invalid @enderror"
-                                    name="tgl_permintaan" value="{{ old('tgl_permintaan', $data->tgl_permintaan) }}"
+                                    name="tgl_permintaan" value="{{ old('tgl_permintaan') }}"
                                     placeholder="Masukkan Tanggal Permintaan">
 
                                 <!-- error message untuk tgl_permintaan -->
@@ -183,9 +181,8 @@
                                 <label class="font-weight-bold">Status Penyetuju</label>
                                 <input type="text"
                                     class="form-control @error('status_penyetuju') is-invalid @enderror"
-                                    name="status_penyetuju"
-                                    value="{{ old('status_penyetuju', $data->status_penyetuju) }}"
-                                    placeholder="Masukkan status_penyetuju Alat">
+                                    name="status_penyetuju" value="{{ old('status_penyetuju') }}"
+                                    placeholder="Masukkan Status Penyetuju">
 
                                 <!-- error message untuk status_penyetuju -->
                                 @error('status_penyetuju')
@@ -200,8 +197,7 @@
                                 <label class="font-weight-bold">Status Penyerah</label>
                                 <input type="text"
                                     class="form-control @error('status_penyerah') is-invalid @enderror"
-                                    name="status_penyerah"
-                                    value="{{ old('status_penyerah', $data->status_penyerah) }}"
+                                    name="status_penyerah" value="{{ old('status_penyerah') }}"
                                     placeholder="Masukkan Status Penyerah">
 
                                 <!-- error message untuk status_penyerah -->
@@ -220,8 +216,7 @@
                                 <label class="font-weight-bold">Status Penerima</label>
                                 <input type="text"
                                     class="form-control @error('status_penerima') is-invalid @enderror"
-                                    name="status_penerima"
-                                    value="{{ old('status_penerima', $data->status_penerima) }}"
+                                    name="status_penerima" value="{{ old('status_penerima') }}"
                                     placeholder="Masukkan Status Penerima">
 
                                 <!-- error message untuk status_penerima -->
@@ -236,7 +231,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Tanggal Kembali</label>
                                 <input type="date" class="form-control @error('tgl_kembali') is-invalid @enderror"
-                                    name="tgl_kembali" value="{{ old('tgl_kembali', $data->tgl_kembali) }}"
+                                    name="tgl_kembali" value="{{ old('tgl_kembali') }}"
                                     placeholder="Masukkan tgl_kembali Alat">
 
                                 <!-- error message untuk tgl_kembali -->
@@ -251,8 +246,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Kondisi Alat</label>
                                 <input type="text" class="form-control @error('kondisi') is-invalid @enderror"
-                                    name="kondisi" value="{{ old('kondisi', $data->kondisi) }}"
-                                    placeholder="Masukkan kondisi Alat">
+                                    name="kondisi" value="{{ old('kondisi') }}" placeholder="Masukkan kondisi Alat">
 
                                 <!-- error message untuk kondisi -->
                                 @error('kondisi')

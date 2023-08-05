@@ -9,7 +9,7 @@ class Tool extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_alat', 'spek_alat', 'lokasi', 'kondisi_alat',
-        'harga', 'keterangan'
+        'nomer_alat', 'nama_alat', 'spek_alat', 'lokasi', 'kondisi_alat',
+        'harga', 'keterangan', 'image'
     ];
 }

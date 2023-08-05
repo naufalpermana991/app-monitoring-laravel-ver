@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tools', function (Blueprint $table) {
+        Schema::create('monitoring', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nomer_alat');
-            $table->string('nama_alat');
-            $table->text('spek_alat');
-            $table->string('lokasi');
-            $table->string('kondisi_alat');
-            $table->string('harga');
-            $table->string('keterangan');
-            $table->string('image');
+            $table->enum('status', ['SUKSES', 'GAGAL']);
             $table->timestamps();
         });
     }
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tools');
+        Schema::dropIfExists('monitoring');
     }
 };

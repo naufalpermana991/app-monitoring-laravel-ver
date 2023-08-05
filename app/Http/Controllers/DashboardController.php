@@ -6,6 +6,7 @@ use App\Models\Calibration;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Tool;
+use App\Models\ToolRequest;
 
 class DashboardController extends BaseController
 {
@@ -13,9 +14,10 @@ class DashboardController extends BaseController
     {
         $alat = Tool::count();
         $kalibrasi = Calibration::count();
+        $permintaan_alat = ToolRequest::count();
         return view(
             'pages.dashboard',
-            compact('alat', 'kalibrasi'),
+            compact('alat', 'kalibrasi', 'permintaan_alat'),
             [
                 "title" => "Beranda"
             ]

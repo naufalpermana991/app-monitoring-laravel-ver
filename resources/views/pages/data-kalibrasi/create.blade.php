@@ -53,15 +53,14 @@
         <div class="container mt-5">
             <div class="box-shadow p-5">
                 <h4 class="text-center">Formulir Kelola Data Kalibrasi</h4>
-                <form action="{{ route('datakalibrasi.update', $calibrations->id) }}" method="POST">
+                <form action="{{ route('datakalibrasi.store') }}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label class="font-weight-bold">Nomer Kalibrasi</label>
                                 <input type="text" class="form-control @error('no_kalibrasi') is-invalid @enderror"
-                                    name="no_kalibrasi" value="{{ old('no_kalibrasi', $calibrations->no_kalibrasi) }}"
+                                    name="no_kalibrasi" value="{{ old('no_kalibrasi') }}"
                                     placeholder="Masukkan Nomer Kalibrasi">
                                 <!-- error message untuk no_kalibrasi -->
                                 @error('no_kalibrasi')
@@ -75,8 +74,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Kode Alat</label>
                                 <input type="number" class="form-control @error('id_alat') is-invalid @enderror"
-                                    name="id_alat" value="{{ old('id_alat', $calibrations->id_alat) }}"
-                                    placeholder="Masukkan Kode Alat">
+                                    name="id_alat" value="{{ old('id_alat') }}" placeholder="Masukkan Kode Alat">
 
                                 <!-- error message untuk id_alat -->
                                 @error('id_alat')
@@ -91,8 +89,7 @@
                                 <label class="font-weight-bold">Tanggal Kalibrasi</label>
                                 <input type="date"
                                     class="form-control @error('tanggal_kalibrasi') is-invalid @enderror"
-                                    name="tanggal_kalibrasi"
-                                    value="{{ old('tanggal_kalibrasi', $calibrations->tanggal_kalibrasi) }}"
+                                    name="tanggal_kalibrasi" value="{{ old('tanggal_kalibrasi') }}"
                                     placeholder="Masukkan Tanggal Kalibrasi">
 
                                 <!-- error message untuk tanggal_kalibrasi -->
@@ -111,8 +108,7 @@
                                 <label class="font-weight-bold">Petugas Penerima</label>
                                 <input type="text"
                                     class="form-control @error('petugas_penerima') is-invalid @enderror"
-                                    name="petugas_penerima"
-                                    value="{{ old('petugas_penerima', $calibrations->petugas_penerima) }}"
+                                    name="petugas_penerima" value="{{ old('petugas_penerima') }}"
                                     placeholder="Masukkan Petugas Penerima">
 
                                 <!-- error message untuk petugas_penerima -->
@@ -128,8 +124,7 @@
                                 <label class="font-weight-bold">Petugas Menyerahkan</label>
                                 <input type="text"
                                     class="form-control @error('petugas_menyerahkan') is-invalid @enderror"
-                                    name="petugas_menyerahkan"
-                                    value="{{ old('petugas_menyerahkan', $calibrations->petugas_menyerahkan) }}"
+                                    name="petugas_menyerahkan" value="{{ old('petugas_menyerahkan') }}"
                                     placeholder="Masukkan Petugas Menyerahkan">
 
                                 <!-- error message untuk petugas_menyerahkan -->
@@ -149,7 +144,7 @@
                                 <input type="date"
                                     class="form-control @error('thl_berakhirnya_masa_kalibrasi') is-invalid @enderror"
                                     name="thl_berakhirnya_masa_kalibrasi"
-                                    value="{{ old('thl_berakhirnya_masa_kalibrasi', $calibrations->thl_berakhirnya_masa_kalibrasi) }}"
+                                    value="{{ old('thl_berakhirnya_masa_kalibrasi') }}"
                                     placeholder="Masukkan Tanggal Kadaluarsa">
 
                                 <!-- error message untuk thl_berakhirnya_masa_kalibrasi -->
@@ -165,8 +160,7 @@
                                 <label class="font-weight-bold">Keterangan Kalibrasi</label>
                                 <input type="text"
                                     class="form-control @error('ket_kalibrasi') is-invalid @enderror"
-                                    name="ket_kalibrasi"
-                                    value="{{ old('ket_kalibrasi', $calibrations->ket_kalibrasi) }}"
+                                    name="ket_kalibrasi" value="{{ old('ket_kalibrasi') }}"
                                     placeholder="Masukkan Keterangan kalibrasi">
 
                                 <!-- error message untuk ket_kalibrasi -->

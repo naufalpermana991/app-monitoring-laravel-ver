@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Kelola Data Kalibrasi || Monitoring Kalibrasi V2.0</title>
+    <title>Kelola Data Alat || Monitoring Kalibrasi V2.0</title>
     <!-- Favicon-->
 
     @stack('prepend-style')
@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <div class="btn btn-back">
-                        <a class="text-decoration-none" href="/datakalibrasi"><i data-feather="chevron-left"
+                        <a class="text-decoration-none" href="/alat"><i data-feather="chevron-left"
                                 class="chevron me-3"></i>Kembali</a>
                     </div>
                 </div>
@@ -50,21 +50,29 @@
             </div>
         </nav>
         <!-- Page content-->
+        <!-- error message untuk title -->
+        @error('title')
+            <div class="alert alert-danger mt-2">
+                {{ $message }}
+            </div>
+        @enderror
+
         <div class="container mt-5">
             <div class="box-shadow p-5">
-                <h4 class="text-center">Formulir Kelola Data Kalibrasi</h4>
-                <form action="{{ route('datakalibrasi.update', $calibrations->id) }}" method="POST">
+                <h4 class="text-center mb-4">Formulir Kelola Data Alat</h4>
+                <form action="{{ route('alat.update', $tool->id) }}" method="POST" enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Nomer Kalibrasi</label>
-                                <input type="text" class="form-control @error('no_kalibrasi') is-invalid @enderror"
-                                    name="no_kalibrasi" value="{{ old('no_kalibrasi', $calibrations->no_kalibrasi) }}"
-                                    placeholder="Masukkan Nomer Kalibrasi">
-                                <!-- error message untuk no_kalibrasi -->
-                                @error('no_kalibrasi')
+                                <label class="font-weight-bold">Nomer Alat</label>
+                                <input type="text" class="form-control @error('nomer_alat') is-invalid @enderror"
+                                    name="nomer_alat" value="{{ $tool->nomer_alat }}" placeholder="Masukkan Nama Alat">
+
+                                <!-- error message untuk nomer_alat -->
+                                @error('nomer_alat')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -73,13 +81,12 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Kode Alat</label>
-                                <input type="number" class="form-control @error('id_alat') is-invalid @enderror"
-                                    name="id_alat" value="{{ old('id_alat', $calibrations->id_alat) }}"
-                                    placeholder="Masukkan Kode Alat">
+                                <label class="font-weight-bold">Nama Alat</label>
+                                <input type="text" class="form-control @error('nama_alat') is-invalid @enderror"
+                                    name="nama_alat" value="{{ $tool->nama_alat }}" placeholder="Masukkan Nama Alat">
 
-                                <!-- error message untuk id_alat -->
-                                @error('id_alat')
+                                <!-- error message untuk nama_alat -->
+                                @error('nama_alat')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -88,15 +95,13 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Tanggal Kalibrasi</label>
-                                <input type="date"
-                                    class="form-control @error('tanggal_kalibrasi') is-invalid @enderror"
-                                    name="tanggal_kalibrasi"
-                                    value="{{ old('tanggal_kalibrasi', $calibrations->tanggal_kalibrasi) }}"
-                                    placeholder="Masukkan Tanggal Kalibrasi">
+                                <label class="font-weight-bold">Spesifikasi</label>
+                                <input type="text" class="form-control @error('spek_alat') is-invalid @enderror"
+                                    name="spek_alat" value="{{ $tool->spek_alat }}"
+                                    placeholder="Masukkan Spesifikasi Alat">
 
-                                <!-- error message untuk tanggal_kalibrasi -->
-                                @error('tanggal_kalibrasi')
+                                <!-- error message untuk spek_alat -->
+                                @error('spek_alat')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -108,15 +113,12 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Petugas Penerima</label>
-                                <input type="text"
-                                    class="form-control @error('petugas_penerima') is-invalid @enderror"
-                                    name="petugas_penerima"
-                                    value="{{ old('petugas_penerima', $calibrations->petugas_penerima) }}"
-                                    placeholder="Masukkan Petugas Penerima">
+                                <label class="font-weight-bold">Lokasi</label>
+                                <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
+                                    name="lokasi" value="{{ $tool->lokasi }}" placeholder="Masukkan Lokasi">
 
-                                <!-- error message untuk petugas_penerima -->
-                                @error('petugas_penerima')
+                                <!-- error message untuk lokasi -->
+                                @error('lokasi')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -125,15 +127,13 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Petugas Menyerahkan</label>
-                                <input type="text"
-                                    class="form-control @error('petugas_menyerahkan') is-invalid @enderror"
-                                    name="petugas_menyerahkan"
-                                    value="{{ old('petugas_menyerahkan', $calibrations->petugas_menyerahkan) }}"
-                                    placeholder="Masukkan Petugas Menyerahkan">
+                                <label class="font-weight-bold">Kondisi Alat</label>
+                                <input type="text" class="form-control @error('kondisi_alat') is-invalid @enderror"
+                                    name="kondisi_alat" value="{{ $tool->kondisi_alat }}"
+                                    placeholder="Masukkan Kondisi Alat">
 
-                                <!-- error message untuk petugas_menyerahkan -->
-                                @error('petugas_menyerahkan')
+                                <!-- error message untuk kondisi_alat -->
+                                @error('kondisi_alat')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -145,15 +145,12 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Tanggal Kadaluarsa</label>
-                                <input type="date"
-                                    class="form-control @error('thl_berakhirnya_masa_kalibrasi') is-invalid @enderror"
-                                    name="thl_berakhirnya_masa_kalibrasi"
-                                    value="{{ old('thl_berakhirnya_masa_kalibrasi', $calibrations->thl_berakhirnya_masa_kalibrasi) }}"
-                                    placeholder="Masukkan Tanggal Kadaluarsa">
+                                <label class="font-weight-bold">Harga</label>
+                                <input type="text" class="form-control @error('harga') is-invalid @enderror"
+                                    name="harga" value="{{ $tool->harga }}" placeholder="Masukkan Harga">
 
-                                <!-- error message untuk thl_berakhirnya_masa_kalibrasi -->
-                                @error('thl_berakhirnya_masa_kalibrasi')
+                                <!-- error message untuk harga -->
+                                @error('harga')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -162,15 +159,13 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="font-weight-bold">Keterangan Kalibrasi</label>
-                                <input type="text"
-                                    class="form-control @error('ket_kalibrasi') is-invalid @enderror"
-                                    name="ket_kalibrasi"
-                                    value="{{ old('ket_kalibrasi', $calibrations->ket_kalibrasi) }}"
-                                    placeholder="Masukkan Keterangan kalibrasi">
+                                <label class="font-weight-bold">Keterangan Alat</label>
+                                <input type="text" class="form-control @error('keterangan') is-invalid @enderror"
+                                    name="keterangan" value="{{ $tool->keterangan }}"
+                                    placeholder="Masukkan Keterangan Alat">
 
-                                <!-- error message untuk ket_kalibrasi -->
-                                @error('ket_kalibrasi')
+                                <!-- error message untuk keterangan -->
+                                @error('keterangan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -178,7 +173,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="mt-4">
+                            <div class="form-group">
+                                <label class="form-label">Foto</label>
+                                <input class="form-control  @error('image') is-invalid @enderror" type="file"
+                                    name="image">
+                                <img src="/frontend/img/{{ $tool->image }}" width="300px">
+                            </div>
+                        </div>
 
+                        <!-- error message untuk image -->
+                        @error('image')
+                            <div class="alert alert-danger mt-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <div class="row">
                         <div class="col">
                             <button type="submit" class="btn btn-md btn-primary w-100 mt-5">Simpan Data</button>
@@ -187,7 +198,8 @@
                 </form>
             </div>
         </div>
-        @include('includes.script')
+    </div>
+    @include('includes.script')
 </body>
 
 </html>

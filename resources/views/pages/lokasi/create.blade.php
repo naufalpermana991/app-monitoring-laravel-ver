@@ -60,17 +60,15 @@
         <div class="container mt-5">
             <div class="box-shadow p-5">
                 <h4 class="text-center">Formulir Kelola Data Lokasi</h4>
-                <form action="{{ route('lokasi.update', $location->id) }}" method="POST">
+                <form action="{{ route('lokasi.store') }}" method="POST">
 
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label class="font-weight-bold">Kode Alat</label>
                                 <input type="number" class="form-control @error('id_alat') is-invalid @enderror"
-                                    name="id_alat" value="{{ old('id_alat', $location->id_alat) }}"
-                                    placeholder="Masukkan Kode Alat">
+                                    name="id_alat" value="{{ old('id_alat') }}" placeholder="Masukkan Kode Alat">
 
                                 <!-- error message untuk id_alat -->
                                 @error('id_alat')
@@ -84,7 +82,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Lokasi</label>
                                 <input type="text" class="form-control @error('nama_lokasi') is-invalid @enderror"
-                                    name="nama_lokasi" value="{{ old('nama_lokasi', $location->nama_lokasi) }}"
+                                    name="nama_lokasi" value="{{ old('nama_lokasi') }}"
                                     placeholder="Masukkan Nama Lokasi">
 
                                 <!-- error message untuk nama_lokasi -->
@@ -103,8 +101,7 @@
                                 <label class="font-weight-bold">Tanggal Update Lokasi</label>
                                 <input type="date"
                                     class="form-control @error('tgl_update_lokasi') is-invalid @enderror"
-                                    name="tgl_update_lokasi"
-                                    value="{{ old('tgl_update_lokasi', $location->tgl_update_lokasi) }}"
+                                    name="tgl_update_lokasi" value="{{ old('tgl_update_lokasi') }}"
                                     placeholder="Masukkan Tanggal Pembaruan Lokasi">
 
                                 <!-- error message untuk tgl_update_lokasi -->
@@ -119,8 +116,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Keterangan</label>
                                 <input type="text" class="form-control @error('ket_lokasi') is-invalid @enderror"
-                                    name="ket_lokasi" value="{{ old('ket_lokasi', $location->ket_lokasi) }}"
-                                    placeholder="Masukkan Keterangan">
+                                    name="ket_lokasi" value="{{ old('ket_lokasi') }}" placeholder="Masukkan Keterangan">
 
                                 <!-- error message untuk ket_lokasi -->
                                 @error('ket_lokasi')
@@ -133,8 +129,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-md btn-primary w-100 mt-5">Ubah Perubahan
-                                Data</button>
+                            <button type="submit" class="btn btn-md btn-primary w-100 mt-5">Simpan Data</button>
                         </div>
                     </div>
                 </form>
